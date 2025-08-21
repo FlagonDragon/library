@@ -18,7 +18,7 @@ function Book(title, author, pages, read) {
     };
 };
 
-wayOfKings = new Book('The Way of Kings', 'Brandon Sanderson', '1258', 'no')
+wayOfKings = new Book('The Way of Kings', 'Brandon Sanderson', '1258', 'No')
 
 myLibrary.push(wayOfKings);
 
@@ -30,19 +30,47 @@ function addBookToLibrary(title, author, pages, read) {
 
 }
 
-addBookToLibrary('The Dragonbone Chair', 'Tad Williams', '672', 'no');
+addBookToLibrary('The Dragonbone Chair', 'Tad Williams', '672', 'No');
 
-addBookToLibrary('The Winter King', 'Bernard Cornwell', '434', 'no');
+addBookToLibrary('The Winter King', 'Bernard Cornwell', '434', 'No');
 
-function displayBooks() {
+books = document.querySelector('.books'); 
 
-    for (i = 0; i < 10; i++) {
+function displayBooks(array) {
 
-        console.log('potato'+[i]);
+    for (i = 0; i < array.length; i++) {
+
+        bookTitle = document.createElement('td');
+        bookTitle.classList.add(`title${[i]}`);
+        bookTitle.textContent = `${array[i].title}`;
+        books.appendChild(bookTitle);
+        
+        bookAuthor = document.createElement('td');
+        bookAuthor.classList.add(`author${[i]}`);
+        bookAuthor.textContent = `${array[i].author}`;
+        books.appendChild(bookAuthor);
+
+        bookPages = document.createElement('td');
+        bookPages.classList.add(`pages${[i]}`);
+        bookPages.textContent = `${array[i].pages}`;
+        books.appendChild(bookPages);
+
+        bookRead = document.createElement('td');
+        bookRead.classList.add(`read${[i]}`);
+        bookRead.textContent = `${array[i].read}`;
+        books.appendChild(bookRead);
 
     };
 
 };
 
-displayBooks();
+displayBooks(myLibrary);
+
+//test below
+
+// book1 = document.querySelector('.book1');
+
+// book1.textContent = wayOfKings.title;
+
+// test above
 
