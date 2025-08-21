@@ -34,31 +34,34 @@ addBookToLibrary('The Dragonbone Chair', 'Tad Williams', '672', 'No');
 
 addBookToLibrary('The Winter King', 'Bernard Cornwell', '434', 'No');
 
-books = document.querySelector('.books'); 
+bookTable = document.querySelector('.bookTable'); 
 
 function displayBooks(array) {
 
     for (i = 0; i < array.length; i++) {
 
+        row = document.createElement('tr');
+        bookTable.appendChild(row)
+        
         bookTitle = document.createElement('td');
-        bookTitle.classList.add(`title${[i]}`);
+        bookTitle.classList.add(`title${i}`);
         bookTitle.textContent = `${array[i].title}`;
-        books.appendChild(bookTitle);
+        row.appendChild(bookTitle);
         
         bookAuthor = document.createElement('td');
         bookAuthor.classList.add(`author${[i]}`);
         bookAuthor.textContent = `${array[i].author}`;
-        books.appendChild(bookAuthor);
+        row.appendChild(bookAuthor);
 
         bookPages = document.createElement('td');
         bookPages.classList.add(`pages${[i]}`);
         bookPages.textContent = `${array[i].pages}`;
-        books.appendChild(bookPages);
+        row.appendChild(bookPages);
 
         bookRead = document.createElement('td');
         bookRead.classList.add(`read${[i]}`);
         bookRead.textContent = `${array[i].read}`;
-        books.appendChild(bookRead);
+        row.appendChild(bookRead);
 
     };
 
