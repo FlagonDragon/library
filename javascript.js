@@ -35,6 +35,7 @@ addBookToLibrary('The Dragonbone Chair', 'Tad Williams', '672', 'No');
 
 addBookToLibrary('The Winter King', 'Bernard Cornwell', '434', 'No');
 
+
 bookTable = document.querySelector('.bookTable'); 
 
 function displayBooks(array) {
@@ -68,13 +69,56 @@ function displayBooks(array) {
 
 };
 
-displayBooks(myLibrary);
+// displayBooks(myLibrary);
 
-//test below
 
-// book1 = document.querySelector('.book1');
 
-// book1.textContent = wayOfKings.title;
+// button below
 
-// test above
+// addBtn = document.createElement('button');
+// addBtn.classList.add('addBtn');
+
+// addBtn.addEventListener('click',() => {
+
+//     addBtn.showModal()
+
+//     // <dialog></dialog>
+
+// });
+
+// addBtn.classList.add('addBtn');
+
+// button above
+
+const showButton = document.getElementById("showDialog");
+const myDialog = document.getElementById("myDialog");
+const titleInput = myDialog.querySelector("#title");
+const authorInput = myDialog.querySelector("#author");
+const pagesInput = myDialog.querySelector("#pages");
+const readInput = myDialog.querySelector("#read");
+const confirmBtn = myDialog.querySelector("#confirmBtn");
+
+showButton.addEventListener('click', () => {
+    myDialog.showModal();
+});
+
+confirmBtn.addEventListener('click', (event) => {
+
+    event.preventDefault();
+
+    // addBookToLibrary('a', 'b', 12, 'no')
+
+    // displayBooks(myLibrary);
+
+
+    myDialog.close()
+
+    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.value)
+
+    displayBooks(myLibrary);
+
+
+});
+
+// addBookToLibrary('a', 'b', '12', 'No')
 
