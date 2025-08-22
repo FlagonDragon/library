@@ -8,7 +8,8 @@ function Book(title, author, pages, read) {
     this.title = title
     this.author = author
     this.pages = pages
-    this.read = read 
+    this.read = read
+    this.id = crypto.randomUUID()
     this.info = function() {
         if (this.read == 'yes') {
             return `${this.title} by ${this.author}, ${this.pages} pages, already read.`
@@ -49,17 +50,17 @@ function displayBooks(array) {
         row.appendChild(bookTitle);
         
         bookAuthor = document.createElement('td');
-        bookAuthor.classList.add(`author${[i]}`);
+        bookAuthor.classList.add(`author${i}`);
         bookAuthor.textContent = `${array[i].author}`;
         row.appendChild(bookAuthor);
 
         bookPages = document.createElement('td');
-        bookPages.classList.add(`pages${[i]}`);
+        bookPages.classList.add(`pages${i}`);
         bookPages.textContent = `${array[i].pages}`;
         row.appendChild(bookPages);
 
         bookRead = document.createElement('td');
-        bookRead.classList.add(`read${[i]}`);
+        bookRead.classList.add(`read${i}`);
         bookRead.textContent = `${array[i].read}`;
         row.appendChild(bookRead);
 
