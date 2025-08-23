@@ -1,6 +1,7 @@
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
+
     if (!new.target) {
         throw Error('You must use the "new" operator to call the constructor')
     };
@@ -35,15 +36,21 @@ addBookToLibrary('The Dragonbone Chair', 'Tad Williams', '672', 'No');
 
 addBookToLibrary('The Winter King', 'Bernard Cornwell', '434', 'No');
 
-
 bookTable = document.querySelector('.bookTable'); 
 
 function displayBooks(array) {
 
+    bookRows = document.querySelectorAll('.bookRow');
+    
+    for (let book of bookRows) {
+    book.remove();
+    }
+
     for (i = 0; i < array.length; i++) {
 
         row = document.createElement('tr');
-        bookTable.appendChild(row)
+        row.classList.add(`bookRow`);
+        bookTable.appendChild(row);
         
         bookTitle = document.createElement('td');
         bookTitle.classList.add(`title${i}`);
@@ -69,26 +76,7 @@ function displayBooks(array) {
 
 };
 
-// displayBooks(myLibrary);
-
-
-
-// button below
-
-// addBtn = document.createElement('button');
-// addBtn.classList.add('addBtn');
-
-// addBtn.addEventListener('click',() => {
-
-//     addBtn.showModal()
-
-//     // <dialog></dialog>
-
-// });
-
-// addBtn.classList.add('addBtn');
-
-// button above
+displayBooks(myLibrary);
 
 const showButton = document.getElementById("showDialog");
 const myDialog = document.getElementById("myDialog");
@@ -106,19 +94,10 @@ confirmBtn.addEventListener('click', (event) => {
 
     event.preventDefault();
 
-    // addBookToLibrary('a', 'b', 12, 'no')
-
-    // displayBooks(myLibrary);
-
-
     myDialog.close()
 
     addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.value)
 
     displayBooks(myLibrary);
 
-
 });
-
-// addBookToLibrary('a', 'b', '12', 'No')
-
