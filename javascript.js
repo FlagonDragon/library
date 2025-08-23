@@ -20,9 +20,23 @@ function Book(title, author, pages, read) {
     };
 };
 
-wayOfKings = new Book('The Way of Kings', 'Brandon Sanderson', '1258', 'No')
+wayOfKings = new Book('The Way of Kings', 'Brandon Sanderson', '1007', 'No')
 
 myLibrary.push(wayOfKings);
+
+Book.prototype.readStatus = function() {
+
+    if (this.read == 'Yes') {
+        this.read = 'No';
+    } else { 
+        this.read = 'Yes';
+    };
+
+    displayBooks(myLibrary);
+
+};
+
+
 
 function addBookToLibrary(title, author, pages, read) {
 
@@ -35,6 +49,10 @@ function addBookToLibrary(title, author, pages, read) {
 addBookToLibrary('The Dragonbone Chair', 'Tad Williams', '672', 'No');
 
 addBookToLibrary('The Winter King', 'Bernard Cornwell', '434', 'No');
+
+addBookToLibrary('A Game of Thrones', 'George R. R. Martin', '694','Yes')
+
+addBookToLibrary('The Hobbit', 'J. R. R. Tolkien', '310','Yes')
 
 bookTable = document.querySelector('.bookTable'); 
 
@@ -72,21 +90,30 @@ function displayBooks(array) {
         bookRead.textContent = `${array[i].read}`;
         row.appendChild(bookRead);
 
+        statusBtn = document.createElement('button');
+        statusBtn.classList.add(`status${i}`);
+        statusBtn.textContent = `Status`;
+        row.appendChild(statusBtn);
+
+        let num = i;
+
+        statusBtn.addEventListener('click', () => {
+
+            array[num].readStatus();
+            
+
+            displayBooks(myLibrary);
+
+        });
+
         removeBtn = document.createElement('button');
         removeBtn.classList.add(`remove${i}`);
         removeBtn.textContent = `Remove`;
         row.appendChild(removeBtn);
-
-        let num = i
-
-        console.log(num);
         
         removeBtn.addEventListener('click', () => {
 
-            console.log(num);
-
-            
-            myLibrary.splice(num,1);
+            myLibrary.splice(num, 1);
 
             displayBooks(myLibrary);
 
