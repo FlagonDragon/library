@@ -72,6 +72,26 @@ function displayBooks(array) {
         bookRead.textContent = `${array[i].read}`;
         row.appendChild(bookRead);
 
+        removeBtn = document.createElement('button');
+        removeBtn.classList.add(`remove${i}`);
+        removeBtn.textContent = `Remove`;
+        row.appendChild(removeBtn);
+
+        let num = i
+
+        console.log(num);
+        
+        removeBtn.addEventListener('click', () => {
+
+            console.log(num);
+
+            
+            myLibrary.splice(num,1);
+
+            displayBooks(myLibrary);
+
+        });
+
     };
 
 };
@@ -94,10 +114,22 @@ confirmBtn.addEventListener('click', (event) => {
 
     event.preventDefault();
 
-    myDialog.close()
+    myDialog.close();
 
-    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.value)
+    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
 
     displayBooks(myLibrary);
 
 });
+
+// removeBtn = document.querySelector('#removeBtn');
+
+// removeBtn.addEventListener('click', () => {
+
+//     rmvBook = prompt('Which book brother')
+
+//     myLibrary.splice(rmvBook,1);
+
+//     displayBooks(myLibrary);
+
+// })
