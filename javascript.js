@@ -1,17 +1,18 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
+class Book {
 
-    if (!new.target) {
-        throw Error('You must use the "new" operator to call the constructor')
-    };
+    constructor(title, author, pages, read) {   
 
     this.title = title
     this.author = author
     this.pages = pages
     this.read = read
     this.id = crypto.randomUUID()
-    this.info = function() {
+    }
+
+
+    method() {
         if (this.read == 'yes') {
             return `${this.title} by ${this.author}, ${this.pages} pages, already read.`
         } else {
