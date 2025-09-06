@@ -12,7 +12,7 @@ class Book {
     }
 
 
-    method() {
+    info() {
         if (this.read == 'yes') {
             return `${this.title} by ${this.author}, ${this.pages} pages, already read.`
         } else {
